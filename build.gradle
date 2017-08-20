@@ -10,3 +10,8 @@ dependencies {
 	testImplementation 'junit:junit:4.12'
 }
 
+task runFinalJar(type: JavaExec) {
+	classpath = files('build/libs/filebot-wrapper.jar')
+	//classpath += sourceSets.main.runtimeClasspath
+	main = 'Main'
+}
