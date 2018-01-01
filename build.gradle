@@ -1,3 +1,5 @@
+
+
 apply plugin: 'java-library'
 apply plugin: 'maven'
 
@@ -7,6 +9,9 @@ version = '0.01-SNAPSHOT'
 repositories {
 	mavenCentral()
 }
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
 	
