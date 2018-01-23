@@ -24,7 +24,7 @@
 package com.kameecoding.filebot.enums;
 
 /**
- * @author Andrej Kovac (kameecoding) <andrej.kovac.ggc@gmail.com> on
+ * @author Andrej Kovac (kameecoding) <kamee@kameecoding.com> on
  * 2018-01-16.
  */
 public enum Database {
