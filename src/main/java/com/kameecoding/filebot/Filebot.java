@@ -64,18 +64,14 @@ public class Filebot implements Runnable {
 			process = processBuilder.start();
 
 			stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			//stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 
-			stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-
-			// read the output from the command
-			// System.out.println("Here is the standard output of the command:\n");
 			StringBuilder sb = new StringBuilder();
 			String s = null;
 			Matcher m = null;
 			Matcher fail = null;
 			while ((s = stdInput.readLine()) != null) {
 				sb.append(s);
-				// System.out.println(s);
 			}
 			s = sb.toString();
 			m = renamePattern.matcher(s);
@@ -89,11 +85,6 @@ public class Filebot implements Runnable {
 			}
 
 			finished = true;
-			// read any errors from the attempted command
-			/*
-			 * System.out.println("Here is the standard error of the command (if any):\n");
-			 * while ((s = stdError.readLine()) != null) { System.out.println(s); }
-			 */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
