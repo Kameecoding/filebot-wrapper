@@ -1,7 +1,5 @@
-
-
 apply plugin: 'java-library'
-apply plugin: 'maven'
+//apply plugin: 'maven'
 
 group = 'com.kameecoding'
 version = '0.01-SNAPSHOT'
@@ -27,6 +25,7 @@ task runFinalJar(type: JavaExec) {
 	main = 'Main'
 }
 
+/*
 uploadArchives {
 	repositories {
 		mavenDeployer {
@@ -38,4 +37,4 @@ uploadArchives {
 			pom.groupId = "${project.group}"
 		}
 	}
-}
+}*/
