@@ -26,15 +26,21 @@ package com.kameecoding.filebot;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Andrej Kovac (kameecoding) <kamee@kameecoding.com> on
  * 2017-07-07.
  */
 public class Filebot implements Runnable {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Filebot.class);
 
 	private ProcessBuilder processBuilder;
 	private Process process;
@@ -51,16 +57,18 @@ public class Filebot implements Runnable {
 	private Filebot() {
 	}
 
-	public static Filebot newInstance(String location, List<String> args) {
+	public static Filebot newInstance(String executable, List<String> args) {
 		Filebot instance = new Filebot();
-		args.add(0, location);
-		instance.processBuilder = new ProcessBuilder(args);
+		List<String> arguments = new ArrayList<>(args);
+		arguments.add(0, executable);
+		instance.processBuilder = new ProcessBuilder(arguments);
 		return instance;
 	}
 
 	@Override
 	public void run() {
 		try {
+			LOGGER.info("Filebot running");
 			process = processBuilder.start();
 
 			stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -79,6 +87,7 @@ public class Filebot implements Runnable {
 			if (m.find()) {
 				oldName = m.group(1);
 				newName = m.group(2);
+				LOGGER.info("Renamed {} to {}", oldName, newName);
 				success = true;
 			} else if (fail.find()) {
 				success = false;
@@ -86,7 +95,7 @@ public class Filebot implements Runnable {
 
 			finished = true;
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("Filebot failed", e);
 		}
 	}
 
