@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="filebot-wrapper" pattern="file[group:filebot-wrapper]:*//*" />
+</component>
