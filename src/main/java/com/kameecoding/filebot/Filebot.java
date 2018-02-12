@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** @author Andrej Kovac kameecoding (kamee@kameecoding.com) on 2017-07-07. */
 public class Filebot implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Filebot.class);

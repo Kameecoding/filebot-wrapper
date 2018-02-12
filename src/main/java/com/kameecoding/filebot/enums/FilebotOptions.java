@@ -1,6 +1,5 @@
 package com.kameecoding.filebot.enums;
 
-/** @author Andrej Kovac kameecoding (kamee@kameecoding.com) on 2017-07-07. */
 public enum FilebotOptions {
     rename("-rename", "", true),
     format("--format", "", true),
