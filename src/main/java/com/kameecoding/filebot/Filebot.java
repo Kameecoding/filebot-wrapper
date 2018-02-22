@@ -18,7 +18,7 @@ public class Filebot implements Runnable {
     private ProcessBuilder processBuilder;
     private Pattern failurePattern =
             Pattern.compile(".*failure.*", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
-    private boolean success;
+    private boolean success = true;
     private File logfile;
     private String output;
 

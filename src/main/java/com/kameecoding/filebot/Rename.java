@@ -21,6 +21,8 @@ public class Rename implements Callable<RenameResult> {
     private File logfile;
     private File executable;
     private List<String> arguments;
+    private LanguageAlpha3Code language = LanguageAlpha3Code.eng;
+    private boolean dryRun;
 
     private Rename() {}
 
@@ -30,7 +32,7 @@ public class Rename implements Callable<RenameResult> {
         Filebot filebot = Filebot.newInstance(executable, arguments, logfile);
         filebot.run();
         if (!filebot.isSuccess()) {
-            renameResult.result = ResultType.SUCCESS;
+            renameResult.result = ResultType.FAILURE;
             renameResult.reasons.add("Filebot failed");
             return renameResult;
         }
@@ -41,13 +43,13 @@ public class Rename implements Callable<RenameResult> {
         if (m.find()) {
             renameResult.oldFile = new File(m.group(1));
             renameResult.newFile = new File(m.group(2));
-            if (!renameResult.newFile.exists()) {
-                renameResult.result = ResultType.SUCCESS;
+            if (!dryRun && !renameResult.newFile.exists()) {
+                renameResult.result = ResultType.FAILURE;
                 renameResult.reasons.add("File was renamed but output doesn't exist");
             }
             LOGGER.info("Renamed {} to {}", renameResult.getOldName(), renameResult.getNewName());
         } else {
-            renameResult.result = ResultType.SUCCESS;
+            renameResult.result = ResultType.FAILURE;
             renameResult.reasons.add("Failed to parse output");
         }
 
@@ -58,12 +60,10 @@ public class Rename implements Callable<RenameResult> {
         Rename rename = new Rename();
         String input;
         String output;
-        boolean dryRun;
         boolean strict;
         String conflict = "override";
         Databases db = Databases.TheTvDB;
         String format = "{plex}";
-        LanguageAlpha3Code language = LanguageAlpha3Code.eng;
 
         public RenameConfigurator(File executable, File input) {
             rename.executable = executable;
@@ -76,7 +76,7 @@ public class Rename implements Callable<RenameResult> {
         }
 
         public RenameConfigurator dryRun(boolean dryRun) {
-            this.dryRun =dryRun;
+            rename.dryRun =dryRun;
             return this;
         }
 
@@ -101,7 +101,12 @@ public class Rename implements Callable<RenameResult> {
         }
 
         public RenameConfigurator language(LanguageAlpha3Code language) {
-            this.language = language;
+            rename.language = language;
+            return this;
+        }
+
+        public RenameConfigurator format(String format) {
+            this.format = format;
             return this;
         }
 
@@ -109,14 +114,14 @@ public class Rename implements Callable<RenameResult> {
             rename.arguments = new ArrayList<>();
             rename.arguments.add(FilebotOptions.rename.getOpt());
             rename.arguments.add(input);
-            if (dryRun) {
+            if (rename.dryRun) {
                 rename.arguments.add(FilebotOptions.action.getOpt());
                 rename.arguments.add("test");
             }
             rename.arguments.add(FilebotOptions.lang.getOpt());
-            rename.arguments.add(language.getAlpha3B().toString());
+            rename.arguments.add(rename.language.getAlpha3B().toString());
             rename.arguments.add(FilebotOptions.format.getOpt());
-            rename.arguments.add("{plex}");
+            rename.arguments.add(format);
             rename.arguments.add(FilebotOptions.db.getOpt());
             rename.arguments.add(db.toString());
             rename.arguments.add(FilebotOptions.output.getOpt());
@@ -128,5 +133,9 @@ public class Rename implements Callable<RenameResult> {
             }
             return rename;
         }
+    }
+
+    public LanguageAlpha3Code getLanguage() {
+        return language;
     }
 }

@@ -37,4 +37,12 @@ public class RenameResult {
     public List<String> getReasons() {
         return Collections.unmodifiableList(reasons);
     }
+
+    public ResultType getResult() {
+        return result;
+    }
+
+    public boolean isSuccess() {
+        return ResultType.SUCCESS == result;
+    }
 }
