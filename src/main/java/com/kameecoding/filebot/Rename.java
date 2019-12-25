@@ -32,8 +32,7 @@ public class Rename implements Callable<RenameResult> {
         Filebot filebot = Filebot.newInstance(executable, arguments, logfile);
         filebot.run();
         if (!filebot.isSuccess()) {
-            renameResult.result = ResultType.FAILURE;
-            renameResult.reasons.add("Filebot failed");
+            renameResult.setErrorMessage("Filebot failed");
             return renameResult;
         }
 
@@ -44,13 +43,11 @@ public class Rename implements Callable<RenameResult> {
             renameResult.oldFile = new File(m.group(1));
             renameResult.newFile = new File(m.group(2));
             if (!dryRun && !renameResult.newFile.exists()) {
-                renameResult.result = ResultType.FAILURE;
-                renameResult.reasons.add("File was renamed but output doesn't exist");
+                renameResult.setErrorMessage("File was renamed but output doesn't exist");
             }
             LOGGER.info("Renamed {} to {}", renameResult.getOldName(), renameResult.getNewName());
         } else {
-            renameResult.result = ResultType.FAILURE;
-            renameResult.reasons.add("Failed to parse output");
+            renameResult.setErrorMessage("Failed to parse output");
         }
 
         return renameResult;

@@ -12,7 +12,7 @@ public class RenameResult {
     File oldFile;
     File newFile;
     ResultType result;
-    List<String> reasons = new ArrayList<>();
+    String errorMessage;
 
     RenameResult() {}
 
@@ -34,8 +34,17 @@ public class RenameResult {
         return newFile;
     }
 
-    public List<String> getReasons() {
-        return Collections.unmodifiableList(reasons);
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    void setResult(ResultType result) {
+        this.result = result;
+    }
+
+    void setErrorMessage(String errorMessage) {
+        this.result = ResultType.FAILURE;
+        this.errorMessage = errorMessage;
     }
 
     public ResultType getResult() {
