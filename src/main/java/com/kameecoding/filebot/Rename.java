@@ -135,4 +135,9 @@ public class Rename implements Callable<RenameResult> {
     public LanguageAlpha3Code getLanguage() {
         return language;
     }
+
+  public void db(Databases db) {
+    int dbIndex = arguments.indexOf(FilebotOptions.db.getOpt()) + 1;
+    arguments.set(dbIndex, db.toString());
+  }
 }

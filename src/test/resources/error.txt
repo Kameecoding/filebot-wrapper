@@ -1,0 +1,36 @@
+2018-02-03 15:03:08.833  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:10.024 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:10.024  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:11.205 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:11.205  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:12.412 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:12.413  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:13.599 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:13.599  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:14.803 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:14.804  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:15.978 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:15.978  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:17.165 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:17.165  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:18.359 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
+2018-02-03 15:03:18.359  INFO 3344 --- [pool-2-thread-2] com.kameecoding.filebot.Filebot          : Filebot running
+Failed to fetch episode data: [flhd swtcw, swtcw]
+Failed to match files to episode data
+2018-02-03 15:03:19.540 ERROR 3344 --- [pool-2-thread-2] io.recup.runnable.Configurator                : renamer ended with failure
