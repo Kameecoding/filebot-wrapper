@@ -2,7 +2,7 @@ package com.kameecoding.filebot.enums;
 
 
 public enum Databases {
-    TheTvDB("TheTVDB"),
+    TheTvDB("TheMovieDB::TV"),
     TVmaze("TVmaze"),
     TheMovieDB("TheMovieDB");
 
