@@ -30,7 +30,7 @@ public class Rename implements Callable<RenameResult> {
     public RenameResult call() {
         RenameResult renameResult = new RenameResult();
         Filebot filebot = Filebot.newInstance(executable, arguments, logfile);
-        filebot.run();
+         filebot.run();
         if (!filebot.isSuccess()) {
             renameResult.setErrorMessage("Filebot failed");
             return renameResult;
