@@ -61,6 +61,7 @@ public class Rename implements Callable<RenameResult> {
         String conflict = "override";
         Databases db = Databases.TheTvDB;
         String format = "{plex}";
+        private String query;
 
         public RenameConfigurator(File executable, File input) {
             rename.executable = executable;
@@ -97,6 +98,11 @@ public class Rename implements Callable<RenameResult> {
             return this;
         }
 
+        public RenameConfigurator query(String query) {
+            this.query = query;
+            return this;
+        }
+
         public RenameConfigurator language(LanguageAlpha3Code language) {
             rename.language = language;
             return this;
@@ -127,6 +133,10 @@ public class Rename implements Callable<RenameResult> {
             rename.arguments.add(conflict);
             if (!strict) {
                 rename.arguments.add(FilebotOptions.nonStrict.getOpt());
+            }
+            if (query != null) {
+                rename.arguments.add(FilebotOptions.query.getOpt());
+                rename.arguments.add(query);
             }
             return rename;
         }

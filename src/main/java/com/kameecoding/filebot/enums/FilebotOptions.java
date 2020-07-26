@@ -7,7 +7,8 @@ public enum FilebotOptions {
     nonStrict("-non-strict", "", false),
     action("--action", "", true),
     output("--output", "", true),
-    lang("--lang", "", true);
+    lang("--lang", "", true),
+    query("--q", "" ,true);
 
     private String opt;
     private String description;
